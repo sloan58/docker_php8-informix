@@ -16,13 +16,18 @@ RUN apt update \
 COPY ./build-packages /root
 
 RUN mkdir -p /opt/informix/clientsdk
-RUN tar xf /root/PDO_INFORMIX-1.3.3.tar -C /opt/informix/
-RUN tar xf /root/clientsdk.4.10.FC7DE.LINUX.tar -C /opt/informix/clientsdk
-RUN mv /root/csdk.properties /opt/informix/clientsdk
+
+WORKDIR /root
+
+RUN tar xf PDO_INFORMIX-1.3.3.tar -C /opt/informix/
+RUN tar xf clientsdk.4.10.FC7DE.LINUX.tar -C /opt/informix/clientsdk
+RUN mv csdk.properties /opt/informix/clientsdk
 
 RUN groupadd informix \
     && useradd -g informix -p supersecret -d /dev/null informix \
     && chown -R informix.informix /opt/informix \
     && export INFORMIXDIR=/opt/informix
 
-RUN cd /opt/informix/clientsdk && ./installclientsdk -i silent -f ./csdk.properties
+WORKDIR /opt/informix/clientsdk
+RUN chmod 666 csdk.properties
+RUN ./installclientsdk -i silent -f csdk.properties || true
