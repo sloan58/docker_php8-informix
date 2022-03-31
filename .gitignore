@@ -1,1 +1,2 @@
-build-packages/*.tar
+buildFiles/*.tar
+buildFiles/*.tgz
