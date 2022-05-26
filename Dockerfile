@@ -12,9 +12,9 @@ RUN set -x \
 
 ENV PHP_VERSION=8.1
 
-RUN apt-get install expect wget build-essential software-properties-common apt-utils -y \
+RUN apt-get install expect wget build-essential software-properties-common apt-utils nano -y \
     && add-apt-repository ppa:ondrej/php \
-    && apt-get install php${PHP_VERSION}-fpm php${PHP_VERSION}-dev libncurses5 -y
+    && apt-get install php${PHP_VERSION}-fpm php${PHP_VERSION}-dev php${PHP_VERSION}-mysql libncurses5 -y
 
 COPY ./buildFiles /root
 
