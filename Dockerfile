@@ -16,6 +16,8 @@ RUN apt-get install expect wget build-essential software-properties-common apt-u
     && add-apt-repository ppa:ondrej/php \
     && apt-get install php${PHP_VERSION}-fpm php${PHP_VERSION}-dev php${PHP_VERSION}-mysql libncurses5 -y
 
+RUN rm -rf /var/lib/apt/lists/*
+
 COPY ./buildFiles /root
 
 RUN mkdir -p /opt/informix/clientsdk
