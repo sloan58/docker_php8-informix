@@ -26,7 +26,7 @@ RUN wget -qO- "https://cloud.karmatek.io/s/Ydfjq5Rgbbmaqid/download?path=%2Fphp-
 RUN wget -qO- "https://cloud.karmatek.io/s/Ydfjq5Rgbbmaqid/download?path=%2Fphp-informix&files=PDO_INFORMIX-1.3.6.tgz" | tar xzf - -C /opt/informix
 
 RUN groupadd informix \
-    && useradd -g informix -p supersecret -d /dev/null informix \
+    && adduser --system --no-create-home --group informix \
     && chown -R informix.informix /opt/informix
 
 # The Informix installer is supposed to run silently (./installclientsdk -i silent -f ./installer.properties)

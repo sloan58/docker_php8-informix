@@ -7,9 +7,6 @@ expect "CONTINUE:" {send "\r"}
 expect "screen.:" {send "1\r"}
 expect ":" {send "/opt/informix\r"}
 expect "(Y/N):" {send "Y\r"}
-expect "installer.:" {send "\r"}
-expect "):" {send "\r"}
-expect "8080):" {send "\r"}
-expect "yes):" {send "no\r"}
+expect "installer.:" {send "12,13,14,15,16,17,18\r"}
 expect "CONTINUE:" {send "\r"}
 expect "INSTALLER:" {send "\r"}
